@@ -153,6 +153,13 @@ async def video_feed(file_path: str = None):
         media_type="multipart/x-mixed-replace; boundary=frame"
     )
 
+@app.post("/api/v1/chat", response_model=schemas.ChatResponse)
+async def chat_with_agriscan(request: schemas.ChatRequest):
+    """
+    Mode 2: Kisan Chatbot for Q&A
+    """
+    return ai_service.chat_with_kisan(request.query)
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)

@@ -46,4 +46,14 @@ export const getMapLayers = async (scanId) => {
     }
 };
 
+export const chatWithKisan = async (query, userName = 'Farmer') => {
+    try {
+        const response = await api.post('/chat', { query, user_name: userName });
+        return response.data;
+    } catch (error) {
+        console.error('Error in Kisan Chatbot:', error);
+        throw error;
+    }
+};
+
 export default api;

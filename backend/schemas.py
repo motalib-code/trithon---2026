@@ -54,3 +54,13 @@ class Scan(ScanBase):
     result: Optional[ScanResult] = None
     class Config:
         from_attributes = True
+
+# --- Chatbot Schemas ---
+class ChatRequest(BaseModel):
+    query: str
+    user_name: str = "Kisan"
+
+class ChatResponse(BaseModel):
+    samasya: str
+    upay: List[str]
+    savdhani: str
